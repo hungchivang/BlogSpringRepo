@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap 5 Website Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="p-5 bg-primary text-white text-center">
+    <h1>Blogger</h1>
+    <p>Resize this responsive page to see the effect!</p>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="/create">Create</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-4" th:each="blogs: ${blog}">
+            <a th:href="@{/detail/{id}(id=${blogs.id})}"><h2 th:text="${blogs.getTitle()}"></h2></a>
+            <p th:text="${blogs.getCategory().getName()}"></p>
+            <img th:src="${blogs.getImg()}" width="300" height="200">
+            <h3 th:text="${blogs.getContent()}"></h3>
+        </div>
+
+    </div>
+</div>
+
+<div class="mt-5 p-4 bg-dark text-white text-center">
+    <p>Footer</p>
+</div>
+
+</body>
+</html>
